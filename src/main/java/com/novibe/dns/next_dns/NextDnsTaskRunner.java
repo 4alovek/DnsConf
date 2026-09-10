@@ -33,6 +33,8 @@ public class NextDnsTaskRunner extends DnsTaskRunner {
                 - if no sources provided, then all NextDNS settings will be removed.
                 - each line is mapped to an IP–domain pair; lines that cannot be parsed are skipped.
                 - if provided only one type of sources, related settings will be updated; another type remain untouched.
+                - existing redirects absent from provided REDIRECT sources will be removed.
+                - sections listed in hosts_exclude will be skipped while reading hosts sources.
                 - if EXCLUDE_REDIRECT domains provided, they will affect both existing and new redirect rules.
                 NextDNS api rate limiter reset config: 60 seconds after the last request""");
     }
