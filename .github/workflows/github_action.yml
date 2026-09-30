@@ -2,8 +2,11 @@ name: DNS Block&Redirect Configurer cron task
 
 on:
   schedule:
-    - cron: '30 1 * * 1,4' # 04:30 MSK (01:30 UTC)
+    - cron: '30 1 * * *' # 04:30 MSK (01:30 UTC), every day
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -26,7 +29,41 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v5
 
+      - name: Check GeoHide hosts commit
+        id: geohide
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          latest_commit="$(curl --fail-with-body --silent --show-error \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "https://api.github.com/repos/Internet-Helper/GeoHideDNS/commits?path=hosts/hosts&per_page=1" \
+            | jq -er '.[0].sha')"
+
+          if [[ ! "$latest_commit" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "GitHub API returned an invalid commit SHA: $latest_commit" >&2
+            exit 1
+          fi
+
+          saved_commit=""
+          if [[ -f .geohide-commit ]]; then
+            saved_commit="$(tr -d '[:space:]' < .geohide-commit)"
+          fi
+
+          echo "Latest GeoHide hosts commit: $latest_commit"
+          echo "Saved GeoHide hosts commit: ${saved_commit:-not found}"
+          echo "commit=$latest_commit" >> "$GITHUB_OUTPUT"
+
+          if [[ "$GITHUB_EVENT_NAME" == "workflow_dispatch" || "$latest_commit" != "$saved_commit" ]]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "hosts/hosts has not changed; DNS update is not required."
+          fi
+
       - name: Set up JDK 26
+        if: steps.geohide.outputs.changed == 'true'
         uses: actions/setup-java@v5
         with:
           distribution: temurin
@@ -34,9 +71,27 @@ jobs:
           cache: maven
 
       - name: Build with Maven
+        if: steps.geohide.outputs.changed == 'true'
         run: mvn -B clean package
 
       - name: Run application
+        if: steps.geohide.outputs.changed == 'true'
         run: |
           echo "Starting application..."
           java --enable-preview -jar target/*.jar
+
+      - name: Save processed GeoHide commit
+        if: steps.geohide.outputs.changed == 'true'
+        run: |
+          echo "${{ steps.geohide.outputs.commit }}" > .geohide-commit
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .geohide-commit
+
+          if git diff --cached --quiet; then
+            echo "GeoHide commit marker is already up to date."
+            exit 0
+          fi
+
+          git commit -m "Update processed GeoHide hosts commit"
+          git push
