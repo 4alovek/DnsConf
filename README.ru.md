@@ -298,7 +298,7 @@ https://www.youtube.com/watch?v=vbAXM_xAL5I
 4) Добавьте `AUTH_SECRET` и `CLIENT_ID` в **Environment secrets**
 5) Добавьте `DNS`, `REDIRECT`, `BLOCK` и `EXCLUDE_REDIRECT` в **Environment variables**
 
-+ **Action** запускается ежедневно в **01:30 UTC** (04:30 по МСК).  
++ **Action** ежедневно в **01:30 UTC** (04:30 по МСК) проверяет последний commit, затрагивающий `hosts/hosts` в репозитории GeoHideDNS. Обновление DNS запускается только при изменении commit; обработанный SHA сохраняется в `.geohide-commit`.
   Чтобы изменить время, отредактируйте cron в `.github/workflows/github_action.yml`
 + **Action** можно запустить вручную через кнопку **Run workflow**:  
-  вкладка _Actions_ → workflow **DNS Block&Redirect Configurer cron task**
+  вкладка _Actions_ → workflow **DNS Block&Redirect Configurer cron task**. Ручной запуск выполняет обновление принудительно, даже если commit не изменился.
