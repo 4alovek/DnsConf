@@ -29,7 +29,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v5
 
+      - name: Use self-hosted workflow instead
+        if: vars.DNS == 'SELFHOSTED'
+        run: echo 'SELFHOSTED mode uses selfhosted.yml; no provider API calls.'
+
       - name: Check GeoHide hosts commit
+        if: vars.DNS != 'SELFHOSTED'
         id: geohide
         env:
           GH_TOKEN: ${{ github.token }}

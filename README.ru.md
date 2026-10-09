@@ -302,3 +302,7 @@ https://www.youtube.com/watch?v=vbAXM_xAL5I
   Чтобы изменить время, отредактируйте cron в `.github/workflows/github_action.yml`
 + **Action** можно запустить вручную через кнопку **Run workflow**:  
   вкладка _Actions_ → workflow **DNS Block&Redirect Configurer cron task**. Ручной запуск выполняет обновление принудительно, даже если commit не изменился.
+# Собственный DNS вместо NextDNS
+
+Инструкция: [AdGuard Home на VPS](selfhosted/README.ru.md). Переключение через
+`DNS=SELFHOSTED`, ежедневный фильтр GeoHide с `hosts_exclude`, доступ по DoH/DoT.

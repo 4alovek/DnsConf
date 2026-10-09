@@ -250,3 +250,7 @@ Previously generated data is removed **ONLY** when both `BLOCK` and `REDIRECT` s
   `.github/workflows/github_action.yml`
 + You can run the action manually via `Run workflow` button: switch to _Actions_ tab and choose workflow named **DNS
   Block&Redirect Configurer cron task**
+# Self-hosted DNS
+
+See [the VPS setup guide (Russian)](selfhosted/README.ru.md) to replace NextDNS
+with AdGuard Home using `DNS=SELFHOSTED` and an automatically generated GeoHide filter.

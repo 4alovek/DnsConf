@@ -1,0 +1,15 @@
+services:
+  adguard:
+    image: adguard/adguardhome:v0.107.79
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3000:3000/tcp" # Setup wizard, accessed through SSH
+      - "127.0.0.1:8080:80/tcp" # Administration after setup
+      - "127.0.0.1:5353:53/udp" # Local verification only
+      - "127.0.0.1:5353:53/tcp"
+      - "853:853/tcp" # DoT
+      - "443:443/tcp" # DoH
+    volumes:
+      - ./work:/opt/adguardhome/work
+      - ./conf:/opt/adguardhome/conf
+      - ./certs:/certs:ro
