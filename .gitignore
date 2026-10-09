@@ -34,3 +34,7 @@ build/
 
 ### Mac OS ###
 .DS_Store
+selfhosted/work/
+selfhosted/conf/
+selfhosted/certs/
+__pycache__/
