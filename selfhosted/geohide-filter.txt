@@ -81,6 +81,7 @@
 ||bestbuy.com^$dnsrewrite=NOERROR;A;193.233.112.67
 ||blog.strava.com^$dnsrewrite=NOERROR;A;159.194.200.33
 ||blogs.sap.com^$dnsrewrite=NOERROR;A;193.233.112.88
+||bps.openai.com^$dnsrewrite=NOERROR;A;193.233.112.88
 ||buf.build^$dnsrewrite=NOERROR;A;193.233.112.68
 ||build.nvidia.com^$dnsrewrite=NOERROR;A;193.233.112.88
 ||builds.parsec.app^$dnsrewrite=NOERROR;A;193.233.112.88
@@ -177,6 +178,7 @@
 ||fitbit.google.com^$dnsrewrite=NOERROR;A;193.233.112.88
 ||fitbitvestibuleshim-pa.googleapis.com^$dnsrewrite=NOERROR;A;193.233.112.68
 ||flow.google^$dnsrewrite=NOERROR;A;193.233.112.67
+||flow.google.com^$dnsrewrite=NOERROR;A;159.194.200.33
 ||flowmusic.app^$dnsrewrite=NOERROR;A;159.194.200.33
 ||formula1.com^$dnsrewrite=NOERROR;A;193.233.112.88
 ||freakhosting.com^$dnsrewrite=NOERROR;A;159.194.200.33
@@ -299,6 +301,7 @@
 ||platform.openai.com^$dnsrewrite=NOERROR;A;159.194.200.33
 ||platform.parallel.ai^$dnsrewrite=NOERROR;A;159.194.200.33
 ||play.date^$dnsrewrite=NOERROR;A;193.233.112.88
+||playground.google^$dnsrewrite=NOERROR;A;159.194.200.33
 ||powertoolsuk.co.uk^$dnsrewrite=NOERROR;A;193.233.112.88
 ||ppkas.com^$dnsrewrite=NOERROR;A;159.194.200.33
 ||pr0gramm.com^$dnsrewrite=NOERROR;A;193.233.112.67
@@ -337,6 +340,7 @@
 ||slackb.com^$dnsrewrite=NOERROR;A;193.233.112.68
 ||spclient.wg.spotify.com^$dnsrewrite=NOERROR;A;193.233.112.68
 ||spotify.com^$dnsrewrite=NOERROR;A;193.233.112.67
+||spotify.dev^$dnsrewrite=NOERROR;A;193.233.112.68
 ||squareup.com^$dnsrewrite=NOERROR;A;193.233.112.68
 ||staging.strava.com^$dnsrewrite=NOERROR;A;193.233.112.68
 ||statsig.anthropic.com^$dnsrewrite=NOERROR;A;159.194.200.33
