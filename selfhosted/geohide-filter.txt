@@ -233,6 +233,7 @@
 ||kaleido.ai^$dnsrewrite=NOERROR;A;193.233.112.68
 ||labs.google^$dnsrewrite=NOERROR;A;159.194.200.33
 ||labs.google.com^$dnsrewrite=NOERROR;A;159.194.200.33
+||labstailwind.pa.googleapis.com^$dnsrewrite=NOERROR;A;193.233.112.68
 ||lego.com^$dnsrewrite=NOERROR;A;193.233.112.88
 ||linguee.com^$dnsrewrite=NOERROR;A;159.194.200.33
 ||links.strava.com^$dnsrewrite=NOERROR;A;193.233.112.68
