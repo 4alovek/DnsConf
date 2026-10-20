@@ -19,6 +19,7 @@
 ||agentn.global.api5.cursor.sh^$dnsrewrite=NOERROR;A;193.233.112.88
 ||ai.google.dev^$dnsrewrite=NOERROR;A;159.194.200.33
 ||aicode.googleapis.com^$dnsrewrite=NOERROR;A;159.194.200.33
+||aida.googleapis.com^$dnsrewrite=NOERROR;A;193.233.112.88
 ||aisandbox-pa.googleapis.com^$dnsrewrite=NOERROR;A;159.194.200.33
 ||aistudio.google.com^$dnsrewrite=NOERROR;A;159.194.200.33
 ||aitestkitchen.withgoogle.com^$dnsrewrite=NOERROR;A;159.194.200.33
@@ -27,7 +28,10 @@
 ||amd.com^$dnsrewrite=NOERROR;A;193.233.112.67
 ||android.chat.openai.com^$dnsrewrite=NOERROR;A;193.233.112.88
 ||anthropic.com^$dnsrewrite=NOERROR;A;193.233.112.68
+||antigravity-pa.googleapis.com^$dnsrewrite=NOERROR;A;193.233.112.67
+||antigravity-unleash.goog^$dnsrewrite=NOERROR;A;193.233.112.67
 ||antigravity.google^$dnsrewrite=NOERROR;A;193.233.112.67
+||antigravity.googleapis.com^$dnsrewrite=NOERROR;A;193.233.112.68
 ||api-partner.spotify.com^$dnsrewrite=NOERROR;A;193.233.112.88
 ||api.anthropic.com^$dnsrewrite=NOERROR;A;193.233.112.67
 ||api.blue.mongodb.com^$dnsrewrite=NOERROR;A;193.233.112.68
@@ -254,6 +258,7 @@
 ||microcenter.com^$dnsrewrite=NOERROR;A;193.233.112.68
 ||microchip.com^$dnsrewrite=NOERROR;A;193.233.112.67
 ||minicircuits.com^$dnsrewrite=NOERROR;A;159.194.200.33
+||miro.com^$dnsrewrite=NOERROR;A;193.233.112.88
 ||misterfpga.org^$dnsrewrite=NOERROR;A;159.194.200.33
 ||mongodb.com^$dnsrewrite=NOERROR;A;193.233.112.67
 ||mouser.com^$dnsrewrite=NOERROR;A;159.194.200.33
@@ -337,6 +342,10 @@
 ||singlekey-id.com^$dnsrewrite=NOERROR;A;159.194.200.33
 ||sketchup.com^$dnsrewrite=NOERROR;A;193.233.112.88
 ||sketchup.trimble.com^$dnsrewrite=NOERROR;A;193.233.112.68
+||slack-core.com^$dnsrewrite=NOERROR;A;193.233.112.67
+||slack-edge.com^$dnsrewrite=NOERROR;A;193.233.112.68
+||slack-files.com^$dnsrewrite=NOERROR;A;193.233.112.67
+||slack-imgs.com^$dnsrewrite=NOERROR;A;159.194.200.33
 ||slack.com^$dnsrewrite=NOERROR;A;193.233.112.68
 ||slackb.com^$dnsrewrite=NOERROR;A;193.233.112.68
 ||spclient.wg.spotify.com^$dnsrewrite=NOERROR;A;193.233.112.68
