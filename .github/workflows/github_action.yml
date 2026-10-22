@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: dns-config-updates
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -29,12 +33,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v5
 
-      - name: Use self-hosted workflow instead
-        if: vars.DNS == 'SELFHOSTED'
-        run: echo 'SELFHOSTED mode uses selfhosted.yml; no provider API calls.'
+      - name: Select DNS providers
+        id: providers
+        run: python3 selfhosted/select_providers.py
 
       - name: Check GeoHide hosts commit
-        if: vars.DNS != 'SELFHOSTED'
+        if: steps.providers.outputs.cloud == 'true'
         id: geohide
         env:
           GH_TOKEN: ${{ github.token }}

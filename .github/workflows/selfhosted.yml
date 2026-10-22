@@ -6,7 +6,7 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: selfhosted-filter
+  group: dns-config-updates
   cancel-in-progress: false
 jobs:
   update:
@@ -14,13 +14,17 @@ jobs:
     environment: DNS
     steps:
       - uses: actions/checkout@v5
-        if: vars.DNS == 'SELFHOSTED'
+      - name: Select DNS providers
+        id: providers
+        env:
+          DNS: ${{ vars.DNS }}
+        run: python3 selfhosted/select_providers.py
       - uses: actions/setup-python@v5
-        if: vars.DNS == 'SELFHOSTED'
+        if: steps.providers.outputs.selfhosted == 'true'
         with:
           python-version: '3.12'
       - name: Build complete filter
-        if: vars.DNS == 'SELFHOSTED'
+        if: steps.providers.outputs.selfhosted == 'true'
         env:
           REDIRECT: ${{ vars.REDIRECT }}
           BLOCK: ${{ vars.BLOCK }}
@@ -30,7 +34,7 @@ jobs:
           python -m unittest discover -s tests
           python selfhosted/build_filter.py
       - name: Publish changed filter
-        if: vars.DNS == 'SELFHOSTED'
+        if: steps.providers.outputs.selfhosted == 'true'
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
